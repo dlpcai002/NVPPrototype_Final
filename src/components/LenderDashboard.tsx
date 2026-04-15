@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, FileText, Send, ChevronLeft } from 'lucide-react';
+import { Search, FileText, ChevronLeft } from 'lucide-react';
 
 interface LenderDashboardProps {
   onLogout: () => void;
