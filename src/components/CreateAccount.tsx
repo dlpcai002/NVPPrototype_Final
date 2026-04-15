@@ -213,38 +213,42 @@ const CreateAccount: React.FC<CreateAccountProps> = ({ onBackToLogin, onAccountC
         <div className="consent-section">
           <h3 className="section-subtitle">Data Connectivity Permissions (The "Hooks")</h3>
           <div className="integration-cards">
-            <div className="integration-card">
-              <div className="card-header">
-                <Landmark size={20} />
-                <span>Financials</span>
-                <ShieldCheck size={16} className="reassurance-icon" />
-              </div>
-              <label className="toggle-switch">
-                <input 
-                  type="checkbox" 
-                  checked={formData.consentFinancials}
-                  onChange={(e) => setFormData({ ...formData, consentFinancials: e.target.checked })}
-                />
-                <span className="slider"></span>
-                <span className="toggle-label">Authorize Read-Only</span>
-              </label>
-            </div>
-            <div className="integration-card">
-              <div className="card-header">
-                <Cloud size={20} />
-                <span>Infrastructure</span>
-                <ShieldCheck size={16} className="reassurance-icon" />
-              </div>
-              <label className="toggle-switch">
-                <input 
-                  type="checkbox" 
-                  checked={formData.consentInfrastructure}
-                  onChange={(e) => setFormData({ ...formData, consentInfrastructure: e.target.checked })}
-                />
-                <span className="slider"></span>
-                <span className="toggle-label">Authorize Read-Only</span>
-              </label>
-            </div>
+            {formData.role !== 'lender' && (
+              <>
+                <div className="integration-card">
+                  <div className="card-header">
+                    <Landmark size={20} />
+                    <span>Financials</span>
+                    <ShieldCheck size={16} className="reassurance-icon" />
+                  </div>
+                  <label className="toggle-switch">
+                    <input 
+                      type="checkbox" 
+                      checked={formData.consentFinancials}
+                      onChange={(e) => setFormData({ ...formData, consentFinancials: e.target.checked })}
+                    />
+                    <span className="slider"></span>
+                    <span className="toggle-label">Authorize Read-Only</span>
+                  </label>
+                </div>
+                <div className="integration-card">
+                  <div className="card-header">
+                    <Cloud size={20} />
+                    <span>Infrastructure</span>
+                    <ShieldCheck size={16} className="reassurance-icon" />
+                  </div>
+                  <label className="toggle-switch">
+                    <input 
+                      type="checkbox" 
+                      checked={formData.consentInfrastructure}
+                      onChange={(e) => setFormData({ ...formData, consentInfrastructure: e.target.checked })}
+                    />
+                    <span className="slider"></span>
+                    <span className="toggle-label">Authorize Read-Only</span>
+                  </label>
+                </div>
+              </>
+            )}
             <div className="integration-card">
               <div className="card-header">
                 <User size={20} />
@@ -272,19 +276,29 @@ const CreateAccount: React.FC<CreateAccountProps> = ({ onBackToLogin, onAccountC
               onChange={(e) => setFormData({ ...formData, consentRealTime: e.target.checked })}
               required
             />
-            <span>I authorize the Trust Engine to perform continuous background scans to maintain my Live Trust Score</span>
+            <span>
+              {formData.role === 'lender' 
+                ? "I agree to the Terms of Service and confirm that I will handle all accessed SME data in accordance with [POPIA/GDPR] regulations. I understand that my access to specific Trust Reports is subject to individual SME approval."
+                : "I authorize the Trust Engine to perform continuous background scans to maintain my Live Trust Score"
+              }
+            </span>
           </label>
         </div>
 
         <div className="legal-summary-box">
           <div className="legal-col">
             <strong>The Why</strong>
-            <p>To prove your credibility.</p>
+            <p>{formData.role === 'lender' ? 'To facilitate secure SME risk assessment.' : 'To prove your credibility.'}</p>
           </div>
           <div className="legal-divider"></div>
           <div className="legal-col">
             <strong>The What</strong>
-            <p>We process your data to create a 0–100 Risk Score and check security doors.</p>
+            <p>
+              {formData.role === 'lender' 
+                ? 'We provide access to verified SME trust data while maintaining strict regulatory compliance.' 
+                : 'We process your data to create a 0–100 Risk Score and check security doors.'
+              }
+            </p>
           </div>
         </div>
 

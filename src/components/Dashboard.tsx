@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, ShieldCheck, AlertCircle, Activity, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { TrendingUp, ShieldCheck, AlertCircle, Activity, ArrowUpRight, ArrowDownRight, FileText, FileCheck, XCircle } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   return (
@@ -28,6 +28,10 @@ const Dashboard: React.FC = () => {
             <p>Your business remains in the top 10% of peer performers this month.</p>
           </div>
         </div>
+        <button className="header-report-btn">
+          <FileText size={18} />
+          Generate Audit Forms
+        </button>
       </header>
 
       <div className="metrics-grid">
@@ -66,6 +70,44 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      <section className="dashboard-section audit-requests-section">
+        <h3><FileText size={20} className="icon-purple" /> Audit Form Requests</h3>
+        <div className="audit-requests-list">
+          <div className="audit-request-item">
+            <div className="requester-info">
+              <span className="requester-name">Standard Bank - Corporate Division</span>
+              <span className="request-date">Request received: Today, 10:15 AM</span>
+            </div>
+            <div className="request-actions">
+              <button className="action-btn authorize-btn">
+                <FileCheck size={16} />
+                Authorize
+              </button>
+              <button className="action-btn reject-btn">
+                <XCircle size={16} />
+                Reject
+              </button>
+            </div>
+          </div>
+          <div className="audit-request-item">
+            <div className="requester-info">
+              <span className="requester-name">Nedbank - Business Banking</span>
+              <span className="request-date">Request received: Yesterday, 02:40 PM</span>
+            </div>
+            <div className="request-actions">
+              <button className="action-btn authorize-btn">
+                <FileCheck size={16} />
+                Authorize
+              </button>
+              <button className="action-btn reject-btn">
+                <XCircle size={16} />
+                Reject
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="dashboard-section activity-section">
         <h3><Activity size={20} /> Recent Activity</h3>
