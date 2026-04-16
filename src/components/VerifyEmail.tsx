@@ -16,7 +16,7 @@ const VerifyEmail: React.FC<VerifyEmailProps> = ({ onVerified }) => {
 
   return (
     <div className="login-container">
-      <h1 className="login-title">RiskLens</h1>
+      <h1 className="login-title">AuditLens</h1>
       <form className="login-form" onSubmit={handleVerify}>
         <h2 className="step-title">Verify Your Email</h2>
         <p style={{ color: '#666', marginBottom: '1.5rem', textAlign: 'center' }}>

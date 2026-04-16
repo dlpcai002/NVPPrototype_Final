@@ -96,7 +96,7 @@ const BusinessInfo: React.FC = () => {
         </div>
         <div className="security-content">
           <p>
-            RiskLens uses your data strictly for <strong>risk assessment, compliance verification, and trust scoring</strong>. 
+            AuditLens uses your data strictly for <strong>risk assessment, compliance verification, and trust scoring</strong>. 
             All information is encrypted <strong>in transit and at rest</strong> using industry-standard protocols.
           </p>
           <p>

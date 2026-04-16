@@ -357,7 +357,7 @@ const CreateAccount: React.FC<CreateAccountProps> = ({ onBackToLogin, onAccountC
 
   return (
     <div className="login-container create-account-container">
-      <h1 className="login-title">RiskLens</h1>
+      <h1 className="login-title">AuditLens</h1>
       {renderProgressBar()}
       {renderStepSelection()}
     </div>

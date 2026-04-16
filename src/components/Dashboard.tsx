@@ -1,7 +1,16 @@
-import React from 'react';
-import { TrendingUp, ShieldCheck, AlertCircle, Activity, ArrowUpRight, ArrowDownRight, FileText, FileCheck, XCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { TrendingUp, ShieldCheck, AlertCircle, Activity, ArrowUpRight, ArrowDownRight, FileText, FileCheck, XCircle, Download } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = () => {
+    setIsDownloading(true);
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 2500); // Animation duration
+  };
+
   return (
     <div className="tab-content dashboard-view">
       <header className="dashboard-header">
@@ -28,9 +37,26 @@ const Dashboard: React.FC = () => {
             <p>Your business remains in the top 10% of peer performers this month.</p>
           </div>
         </div>
-        <button className="header-report-btn">
-          <FileText size={18} />
-          Generate Audit Forms
+        <button 
+          className={`header-report-btn ${isDownloading ? 'downloading' : ''}`}
+          onClick={handleDownload}
+          disabled={isDownloading}
+        >
+          {isDownloading ? (
+            <div className="download-progress-container">
+              <div className="download-text">
+                <Download size={14} className="spinning-icon" /> Generating...
+              </div>
+              <div className="download-bar">
+                <div className="download-fill"></div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <FileText size={18} />
+              Generate Audit Forms
+            </>
+          )}
         </button>
       </header>
 

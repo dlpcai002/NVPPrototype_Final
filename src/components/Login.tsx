@@ -20,7 +20,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onCreateAccount }) => {
 
   return (
     <div className="login-container">
-      <h1 className="login-title">RiskLens</h1>
+      <h1 className="login-title">AuditLens</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-group">
           <input

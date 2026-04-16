@@ -1,6 +1,6 @@
-# RiskLens Project Overview
+# AuditLens Project Overview
 
-This document summarizes the architecture, components, and features implemented for the RiskLens application.
+This document summarizes the architecture, components, and features implemented for the AuditLens application.
 
 ## Core Architecture
 The application uses **React (TypeScript)** with a state-driven view management system. Navigation is handled by conditional rendering based on the `view` state in `App.tsx`, providing a seamless transition between the login flow and the specialized user dashboards.
